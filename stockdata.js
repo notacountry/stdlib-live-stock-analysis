@@ -1,5 +1,6 @@
 import yfinance from 'yahoo-finance2';
 import incrmmean from '@stdlib/stats/incr/mmean/lib/index.js';
+import incrmrange from '@stdlib/stats/incr/mrange/lib/index.js';
 import plot from '@stdlib/plot';
 import fs from 'fs';
 import path from 'path';
@@ -24,12 +25,9 @@ function getSlowFastAvg( quotes ) {
     const dates = [];
 
     quotes.forEach(quote => {
-        const currslow = slow( quote.close );
-        const currfast = fast( quote.close );
-
-        prices.push( quote.close )
-        slows.push( currslow );
-        fasts.push( currfast );
+        prices.push( quote.close );
+        slows.push( slow( quote.close ) );
+        fasts.push( fast( quote.close ) );
         dates.push(new Date(quote.date).getTime());
     });
 
@@ -63,15 +61,18 @@ async function main() {
         }
     );
 
+    var diff = incrmrange( 2 );
+    diff( prices[0] );
+
     var maprofit = 0;
     var simplebuyprofit = 0;
     const maarr = [maprofit]
     const simplebuyarr = [simplebuyprofit]
     for (let i = 1; i < prices.length; ++i) {
-        const diff = prices[i] - prices[i - 1];
+        diff( prices[i] )
 
-        simplebuyprofit += diff
-        maprofit += slows[i] < fasts[i] ? diff : 0;
+        simplebuyprofit += diff()
+        maprofit += slows[i] < fasts[i] ? diff() : 0;
         simplebuyarr.push( simplebuyprofit );
         maarr.push( maprofit );
     }
