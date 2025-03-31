@@ -12,6 +12,6 @@ One can think of the slow MA as the 'equilibrium price'. If the fast MA moves ab
 
 Now we know when to buy the stock, we can work out a crude profit by taking the difference between the current price and yesterday's price.
 
-Finally, we use `plot` to [compare our moving averages to the stock price](https://github.com/notacountry/stdlib-live-stock-analysis/blob/main/stock-ma-plot.html), and also [view the total profit we make from the MA strategy compared to a simple buy strategy](https://github.com/notacountry/stdlib-live-stock-analysis/blob/main/earnings-plot.html).
+Finally, we use `plot` to [compare our moving averages to the stock price](https://github.com/notacountry/stdlib-live-stock-analysis/blob/main/stock-ma-plot.html), and also [view the total profit we make from the MA strategy compared to a simple buy strategy](https://github.com/notacountry/stdlib-live-stock-analysis/blob/main/earnings-plot.html). To view, download and open the plots in a web browser.
 
 In this case, we see that the simple buy strategy performed better. This may be due to window size and that our chosen stock was increasing a lot over our chosen time period. The main advantage of the MA strategy is that we can stop buying if losses get too great, as can be seen near the start of the comparison plot.
