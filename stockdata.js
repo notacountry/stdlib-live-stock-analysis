@@ -34,7 +34,7 @@ function getSlowFastAvg( quotes ) {
 }
 
 async function main() {
-    const dir = path.dirname( fileURLToPath( import.meta.url ) )
+    const dir = path.dirname( fileURLToPath( import.meta.url ) );
 
     const { dates, prices, slows, fasts } = getSlowFastAvg(
         await fetchHistory( 'AAPL', '2020-01-01T00:00:00.000Z', '2021-01-01T00:00:00.000Z' )
