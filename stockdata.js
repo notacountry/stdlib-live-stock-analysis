@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url';
 async function fetchHistory( ticker, start, end ) {
     try {
         const history = await yfinance.chart( ticker, { period1: start, period2: end } );
-        return history.quotes
+        return history.quotes;
     }
     catch( e ) {
         console.error( `Error fetching yfinance data for ${ticker}`, e );
@@ -24,7 +24,7 @@ function getSlowFastAvg( quotes ) {
     const dates = [];
 
     quotes.forEach(quote => {
-        prices.push( quote.close )
+        prices.push( quote.close );
         slows.push( slow( quote.close ) );
         fasts.push( fast( quote.close ) );
         dates.push(new Date(quote.date).getTime());
@@ -63,11 +63,11 @@ async function main() {
     var maprofit = 0;
     var simplebuyprofit = 0;
     const maarr = [maprofit]
-    const simplebuyarr = [simplebuyprofit]
+    const simplebuyarr = [simplebuyprofit];
     for (let i = 1; i < prices.length; ++i) {
         const diff = prices[i] - prices[i - 1];
 
-        simplebuyprofit += diff
+        simplebuyprofit += diff;
         maprofit += slows[i] < fasts[i] ? diff : 0;
         simplebuyarr.push( simplebuyprofit );
         maarr.push( maprofit );
