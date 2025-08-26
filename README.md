@@ -18,4 +18,4 @@ Finally, we use `plot` to compare our moving averages to the stock price, and al
 
 ![](earnings-plot.png)
 
-In this case, we see that the simple buy strategy performed better. This may be due to window size and that our chosen stock was increasing a lot over our chosen time period. The main advantage of the MA strategy is that we can stop buying if losses get too great, as can be seen near the start of the comparison plot.
+In this case, we see that the simple buy strategy performed better. This is because AAPL was not mean-reverting over the time period. The main advantage of the MA strategy is that we can stop buying if losses get too great, as can be seen near the start of the comparison plot.
